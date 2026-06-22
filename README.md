@@ -1,4 +1,4 @@
-# Beyond Search: A GraphRAG Pipeline for Literary Knowledge Using Neo4j and LangChain
+# GraphRAG Pipeline for Literary Knowledge Using Neo4j and LangChain
 
 **Graf Pengetahuan Literatur Tier 4**
 
