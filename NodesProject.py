@@ -5,12 +5,17 @@ from langchain_core.prompts import PromptTemplate, ChatPromptTemplate
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- 1. SETUP KREDENSIAL ---
-LOCAL_URI = "neo4j://127.0.0.1:7687"
-LOCAL_USERNAME = "neo4j"
-LOCAL_PASSWORD = "pass"
+LOCAL_URI = os.getenv("NEO4J_URI", "neo4j://127.0.0.1:7687")
+LOCAL_USERNAME = os.getenv("NEO4J_USERNAME", "neo4j")
+LOCAL_PASSWORD = os.getenv("NEO4J_PASSWORD")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "https://openrouter.ai/api/v1")
 
 print("Menghubungkan ke Neo4j Desktop Lokal...")
 
@@ -27,8 +32,8 @@ print(graph.schema)
 llm = ChatOpenAI(
     model="openai/gpt-4o-mini",
     temperature=0,
-    openai_api_key="sk-or-v1-id",
-    openai_api_base="https://openrouter.ai/api/v1"
+    openai_api_key=OPENAI_API_KEY,
+    openai_api_base=OPENAI_API_BASE
 )
 
 # --- 4. CYPHER PROMPT ---
