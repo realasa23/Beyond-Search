@@ -89,7 +89,7 @@ graf-pengetahuan/
 ### 2. Clone Repository
 
 ```bash
-git clone https://github.com/USERNAME/graf-pengetahuan.git
+git clone https://github.com/realasa23/Beyond-Search
 cd graf-pengetahuan
 ```
 
@@ -145,13 +145,13 @@ OPENAI_API_BASE=https://openrouter.ai/api/v1
 Jalankan secara berurutan:
 
 ```bash
-# 1. Setup DB dulu (sekali aja)
+# 1. Setup DB 
 python setup_db.py
 
 # 2. ML & Graph Analytics
 python graph_analytics.py
 
-# 3. Main app — Hybrid QA interaktif
+# 3. Main app - Hybrid QA interaktif
 python NodesProject.py
 ```
 
@@ -160,7 +160,7 @@ python NodesProject.py
 **`setup_db.py`** koneksi Neo4j, verifikasi GDS, tampilkan statistik node
 
 **`graph_analytics.py`** jalankan GDS pipeline:
-- PageRank → grafik `pagerank.png`
+- PageRank ke grafik `pagerank.png`
 - Louvain Community Detection
 - FastRP Embedding + K-Means Clustering → grafik `clustering.png`
 
