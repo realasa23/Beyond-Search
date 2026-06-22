@@ -1,27 +1,26 @@
-# GraphRAG Pipeline for Literary Knowledge Using Neo4j and LangChain
+# Beyond Search A GraphRAG Pipeline for Literary Knowledge Using Neo4j and LangChain
 
-**Graf Pengetahuan Literatur Tier 4**
+**Graf Pengetahuan Literatur — Tier 4**
 
-**Realasa Femmi Novelika** (5026231113) & **Haliza Putri Amelliani** (5026231213)
+**Realasa Femmi Novelika** (5026231113) 
+**Haliza Putri Amelliani** (5026231213)  
 
-Graf Pengetahuan - Institut Teknologi Sepuluh Nopember (ITS) Surabaya
+Graf Pengetahuan — Institut Teknologi Sepuluh Nopember (ITS) Surabaya
 
 ---
 
-## Project Overview
+## Deskripsi Proyek
 
 Proyek ini membangun sistem **Graph-Augmented Retrieval (GraphRAG)** untuk domain literatur menggunakan Neo4j dan LangChain. Sistem menggabungkan dua pendekatan retrieval berbasis Knowledge Graph:
 
-- **Text-to-Cypher**: pertanyaan natural language diterjemahkan ke Cypher query dan dieksekusi langsung ke Neo4j menggunakan `GraphCypherQAChain`
-- **Vector RAG**: data buku dari graph di-embed menggunakan HuggingFace (`all-MiniLM-L6-v2`) dan disimpan sebagai vector index di Neo4j
-- **Hybrid QA**: kedua hasil digabung oleh LLM menjadi satu jawaban yang akurat dan lengkap
-- **Graph Analytics**: PageRank Centrality + Louvain Community Detection via GDS
-- **ML on Graph**: FastRP Embedding + K-Means Clustering
+* **Text-to-Cypher**: Pertanyaan *natural language* diterjemahkan ke Cypher query dan dieksekusi langsung ke Neo4j menggunakan `GraphCypherQAChain`.
+* **Vector RAG**: Data buku dari graph diekstrak, di-embed menggunakan HuggingFace (`all-MiniLM-L6-v2`), dan disimpan kembali sebagai vector index di Neo4j (`BookChunk`).
+* **Hybrid QA**: Kedua hasil retrieval (faktual dari Cypher dan semantik dari Vector) digabungkan oleh LLM menjadi satu jawaban yang akurat, lengkap, dan minim halusinasi.
+* **Graph Analytics & ML**: Pemanfaatan Neo4j Graph Data Science (GDS) untuk PageRank Centrality, Louvain Community Detection, dan FastRP Embedding.
 
 ---
 
-## Arsitektur
-
+## Arsitektur Sistem
 ```
 [Wikidata / DBpedia]
         │ SPARQL Query
@@ -33,9 +32,9 @@ Proyek ini membangun sistem **Graph-Augmented Retrieval (GraphRAG)** untuk domai
         │
         ├── [graph_analytics.py] GDS Pipeline
         │       ├── PageRank Centrality
-        │       ├── Louvain Community Detection
-        │       ├── FastRP Embedding (16 dim)
-        │       └── K-Means Clustering (k=4)
+        │       └── Louvain Community Detection
+        │       
+        │       
         │
         └── [NodesProject.py] Hybrid QA Pipeline
                 ├── LLM: OpenRouter (gpt-4o-mini)
@@ -45,20 +44,21 @@ Proyek ini membangun sistem **Graph-Augmented Retrieval (GraphRAG)** untuk domai
 ```
 
 ---
+---
 
-## Spesifikasi Teknis
+## ⚙️ Spesifikasi Teknis
 
 | Komponen | Spesifikasi |
 |---|---|
-| Database | Neo4j Desktop 2.1.4 (versi 2026.05.0) + GDS Plugin |
-| Bahasa | Python 3.13 |
-| LLM | OpenRouter `openai/gpt-4o-mini` |
-| Embedding | HuggingFace `sentence-transformers/all-MiniLM-L6-v2` |
-| Dataset | Wikidata + DBpedia (237+ nodes: 70 Book, 62 Author, 66 Publisher, 39 Genre) |
+| **Database** | Neo4j Desktop 2.1.4 (versi 2026.05.0) + GDS Plugin |
+| **Bahasa** | Python 3.13 + Cypher |
+| **LLM** | OpenRouter `openai/gpt-4o-mini` |
+| **Embedding** | HuggingFace `sentence-transformers/all-MiniLM-L6-v2` (384 dim) |
+| **Dataset** | Wikidata + DBpedia (237+ nodes: 70 Book, 62 Author, 66 Publisher, 39 Genre) |
 
 ---
 
-## Struktur Repository
+## 📁 Struktur Repository
 
 ```
 graf-pengetahuan/
@@ -68,17 +68,12 @@ graf-pengetahuan/
 ├── README.md            # Dokumentasi ini
 ├── requirements.txt     # Dependency Python
 ├── .env.example         # Template environment variables
-├── .gitignore           # File yang diabaikan git
-└── screenshots/
-    ├── ss1_koneksi_db.png
-    ├── ss2_graph_builder.png
-    ├── ss3_ml_clustering.png
-    └── ss4_llm_rag_cypher.png
+└──  .gitignore          # File yang diabaikan git
+ 
 ```
 
 ---
-
-## Instalasi & Konfigurasi
+## 🚀 Instalasi & Konfigurasi
 
 ### 1. Prerequisites
 
@@ -92,7 +87,6 @@ graf-pengetahuan/
 git clone https://github.com/realasa23/Beyond-Search
 cd graf-pengetahuan
 ```
-
 ### 3. Setup Virtual Environment
 
 ```bash
@@ -104,7 +98,6 @@ venv\Scripts\activate
 # Mac/Linux
 source venv/bin/activate
 ```
-
 ### 4. Install Dependencies
 
 ```bash
@@ -122,13 +115,12 @@ cp .env.example .env
 Isi file `.env`:
 
 ```env
-NEO4J_URI=neo4j://127.0.0.1:7687
+NEO4J_URI=neo4j://uri
 NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=password_neo4j_kamu
-OPENAI_API_KEY=sk-or-v1-xxxxxxxxxxxx
+NEO4J_PASSWORD=pass
+OPENAI_API_KEY=sk-or-v1-key
 OPENAI_API_BASE=https://openrouter.ai/api/v1
 ```
-
 ### 6. Setup Neo4j
 
 1. Buka **Neo4j Desktop** → Start database
@@ -139,7 +131,6 @@ OPENAI_API_BASE=https://openrouter.ai/api/v1
    ```
 
 ---
-
 ## Cara Run
 
 Jalankan secara berurutan:
@@ -151,55 +142,7 @@ python setup_db.py
 # 2. ML & Graph Analytics
 python graph_analytics.py
 
-# 3. Main app - Hybrid QA interaktif
+# 3. Main app — Hybrid QA interaktif
 python NodesProject.py
 ```
 
-### Detail setiap file
-
-**`setup_db.py`** koneksi Neo4j, verifikasi GDS, tampilkan statistik node
-
-**`graph_analytics.py`** jalankan GDS pipeline:
-- PageRank ke grafik `pagerank.png`
-- Louvain Community Detection
-- FastRP Embedding + K-Means Clustering → grafik `clustering.png`
-
-**`NodesProject.py`** Hybrid QA interaktif:
-1. Koneksi Neo4j + load schema
-2. Build vector index dari data buku (proses ~1-2 menit pertama kali)
-3. Masuk ke **interactive loop** ketik pertanyaan, tekan Enter
-4. Ketik `exit` untuk keluar
-
-**Contoh pertanyaan:**
-```
-User: Siapa penulis buku dengan genre Mystery?
-User: Rekomendasikan buku yang diterbitkan oleh Penguin Books
-User: Genre apa yang paling banyak ditulis?
-```
-
----
-
-## Dependencies
-
-```
-# requirements.txt
-neo4j>=5.0.0
-langchain>=0.2.0
-langchain-community>=0.2.0
-langchain-openai>=0.1.0
-langchain-neo4j>=0.1.0
-openai>=1.0.0
-python-dotenv>=1.0.0
-pandas>=2.0.0
-numpy>=1.24.0
-matplotlib>=3.7.0
-scikit-learn>=1.3.0
-sentence-transformers>=2.2.0
-```
-
-Install sekaligus:
-```bash
-pip install neo4j langchain langchain-community langchain-openai langchain-neo4j openai python-dotenv pandas numpy matplotlib scikit-learn sentence-transformers
-```
-
-openrouter.ai/docs
