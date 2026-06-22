@@ -1,10 +1,10 @@
 # Beyond Search: A GraphRAG Pipeline for Literary Knowledge Using Neo4j and LangChain
 
-**Graf Pengetahuan Literatur — Tier 4**
+**Graf Pengetahuan Literatur Tier 4**
 
 **Realasa Femmi Novelika** (5026231113) & **Haliza Putri Amelliani** (5026231213)
 
-Graf Pengetahuan — Institut Teknologi Sepuluh Nopember (ITS) Surabaya
+Graf Pengetahuan - Institut Teknologi Sepuluh Nopember (ITS) Surabaya
 
 ---
 
@@ -157,17 +157,17 @@ python NodesProject.py
 
 ### Detail setiap file
 
-**`setup_db.py`** — koneksi Neo4j, verifikasi GDS, tampilkan statistik node
+**`setup_db.py`** koneksi Neo4j, verifikasi GDS, tampilkan statistik node
 
-**`graph_analytics.py`** — jalankan GDS pipeline:
+**`graph_analytics.py`** jalankan GDS pipeline:
 - PageRank → grafik `pagerank.png`
 - Louvain Community Detection
 - FastRP Embedding + K-Means Clustering → grafik `clustering.png`
 
-**`NodesProject.py`** — Hybrid QA interaktif:
+**`NodesProject.py`** Hybrid QA interaktif:
 1. Koneksi Neo4j + load schema
 2. Build vector index dari data buku (proses ~1-2 menit pertama kali)
-3. Masuk ke **interactive loop** — ketik pertanyaan, tekan Enter
+3. Masuk ke **interactive loop** ketik pertanyaan, tekan Enter
 4. Ketik `exit` untuk keluar
 
 **Contoh pertanyaan:**
