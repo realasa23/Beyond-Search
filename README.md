@@ -2,15 +2,14 @@
 
 **Graf Pengetahuan Literatur Tier 4**
 
-**Realasa Femmi Novelika** (5026231113) 
+**Realasa Femmi Novelika** (5026231113)
 **Haliza Putri Amelliani** (5026231213)  
-
-Graf Pengetahuan 
+Mata Kuliah: Graf Pengetahuan
 Institut Teknologi Sepuluh Nopember (ITS) Surabaya
 
 ---
 
-## Deskripsi Proyek
+## 📖 Deskripsi Proyek
 
 Proyek ini membangun sistem **Graph-Augmented Retrieval (GraphRAG)** untuk domain literatur menggunakan Neo4j dan LangChain. Sistem menggabungkan dua pendekatan retrieval berbasis Knowledge Graph:
 
@@ -24,27 +23,24 @@ Proyek ini membangun sistem **Graph-Augmented Retrieval (GraphRAG)** untuk domai
 ## Arsitektur Sistem
 ```
 [Wikidata / DBpedia]
-        │ SPARQL Query
-        ▼
+│ SPARQL Query
+▼
 [Neo4j Knowledge Graph]
- Book ──WRITTEN_BY──► Author
- Book ──BELONGS_TO_GENRE──► Genre
- Book ──PUBLISHED_BY──► Publisher
-        │
-        ├── [graph_analytics.py] GDS Pipeline
-        │       ├── PageRank Centrality
-        │       └── Louvain Community Detection
-        │       
-        │       
-        │
-        └── [NodesProject.py] Hybrid QA Pipeline
-                ├── LLM: OpenRouter (gpt-4o-mini)
-                ├── Text-to-Cypher (GraphCypherQAChain)
-                ├── Vector RAG (HuggingFace + Neo4jVector)
-                └── Hybrid Answer Combiner (LLM)
+Book ──WRITTEN_BY──► Author
+Book ──BELONGS_TO_GENRE──► Genre
+Book ──PUBLISHED_BY──► Publisher
+│
+├── [graph_analytics.py] GDS Pipeline
+│       ├── PageRank Centrality
+│       └── Louvain Community Detection
+│        
+│
+└── [NodesProject.py] Hybrid QA Pipeline
+├── LLM: OpenRouter (gpt-4o-mini)
+├── Text-to-Cypher (GraphCypherQAChain)
+├── Vector RAG (HuggingFace + Neo4jVector)
+└── Hybrid Answer Combiner (LLM)
 ```
-
----
 ---
 
 ## ⚙️ Spesifikasi Teknis
@@ -62,14 +58,15 @@ Proyek ini membangun sistem **Graph-Augmented Retrieval (GraphRAG)** untuk domai
 ## 📁 Struktur Repository
 
 ```
-graf-pengetahuan/
-├── setup_db.py          # Setup awal: koneksi & verifikasi Neo4j
-├── graph_analytics.py   # GDS: PageRank, Louvain, FastRP, K-Means
-├── NodesProject.py      # Hybrid QA: Text-to-Cypher + Vector RAG + LLM
-├── README.md            # Dokumentasi ini
-├── requirements.txt     # Dependency Python
-├── .env.example         # Template environment variables
-└── .gitignore          # File yang diabaikan git
+Beyond-Search/
+├── .gitignore                   # File untuk mengabaikan file yang tidak diperlukan git
+├── NodesProject.py              # Hybrid QA: Text-to-Cypher + Vector RAG + LLM (Interactive)
+├── README.md                    # Dokumentasi ini
+├── data_literatur_final (1).csv # Dataset mentah domain literatur dari Wikidata/DBpedia
+├── graph_analytics.py           # GDS Pipeline: PageRank, Louvain, dan FastRP Embedding
+├── setup_db.py                  # Setup awal: koneksi & verifikasi database Neo4j
+├── requirements.txt             # Dependency Python berkas proyek
+└── .env.example                 # Template environment variables
  
 ```
 
@@ -124,8 +121,8 @@ OPENAI_API_BASE=https://openrouter.ai/api/v1
 ```
 ### 6. Setup Neo4j
 
-1. Buka **Neo4j Desktop** → Start database
-2. Install **GDS Plugin**: klik `...` pada database → tab **Plugins** → install **Graph Data Science**
+1. **Neo4j Desktop** → Start database
+2. Install **GDS Plugin**: klik `...` pada database lalu tab **Plugins** dan install **Graph Data Science**
 3. Verifikasi GDS aktif di Neo4j Browser:
    ```cypher
    RETURN gds.version()
