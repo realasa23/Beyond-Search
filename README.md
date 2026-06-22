@@ -52,7 +52,7 @@ Proyek ini membangun sistem **Graph-Augmented Retrieval (GraphRAG)** untuk domai
 |---|---|
 | Database | Neo4j Desktop 2.1.4 (versi 2026.05.0) + GDS Plugin |
 | Bahasa | Python 3.13 |
-| LLM | OpenRouter — `openai/gpt-4o-mini` |
+| LLM | OpenRouter `openai/gpt-4o-mini` |
 | Embedding | HuggingFace `sentence-transformers/all-MiniLM-L6-v2` |
 | Dataset | Wikidata + DBpedia (237+ nodes: 70 Book, 62 Author, 66 Publisher, 39 Genre) |
 
