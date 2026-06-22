@@ -1,6 +1,6 @@
 # Beyond Search A GraphRAG Pipeline for Literary Knowledge Using Neo4j and LangChain
 
-**Graf Pengetahuan Literatur — Tier 4**
+**Graf Pengetahuan Literatur Tier 4**
 
 **Realasa Femmi Novelika** (5026231113) 
 **Haliza Putri Amelliani** (5026231213)  
