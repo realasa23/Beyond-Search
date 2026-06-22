@@ -5,7 +5,8 @@
 **Realasa Femmi Novelika** (5026231113) 
 **Haliza Putri Amelliani** (5026231213)  
 
-Graf Pengetahuan — Institut Teknologi Sepuluh Nopember (ITS) Surabaya
+Graf Pengetahuan 
+Institut Teknologi Sepuluh Nopember (ITS) Surabaya
 
 ---
 
@@ -68,7 +69,7 @@ graf-pengetahuan/
 ├── README.md            # Dokumentasi ini
 ├── requirements.txt     # Dependency Python
 ├── .env.example         # Template environment variables
-└──  .gitignore          # File yang diabaikan git
+└── .gitignore          # File yang diabaikan git
  
 ```
 
