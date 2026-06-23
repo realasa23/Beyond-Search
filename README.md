@@ -31,7 +31,7 @@ Book ──BELONGS_TO_GENRE──► Genre
 Book ──PUBLISHED_BY──► Publisher
 │
 ├── [graph_analytics.py] GDS Pipeline
-│       ├── PageRank Centrality
+│       ├── Degree Centrality
 │       |── Louvain Community Detection
 |       └── Jaccard Similarity
 │
