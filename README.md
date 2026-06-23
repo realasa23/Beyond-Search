@@ -32,7 +32,8 @@ Book ──PUBLISHED_BY──► Publisher
 │
 ├── [graph_analytics.py] GDS Pipeline
 │       ├── PageRank Centrality
-│       └── Louvain Community Detection
+│       |── Louvain Community Detection
+|       └── Jaccard Similarity
 │        
 │
 └── [NodesProject.py] Hybrid QA Pipeline
@@ -110,15 +111,6 @@ Salin file template:
 cp .env.example .env
 ```
 
-Isi file `.env`:
-
-```env
-NEO4J_URI=neo4j://uri
-NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=pass
-OPENAI_API_KEY=sk-or-v1-key
-OPENAI_API_BASE=https://openrouter.ai/api/v1
-```
 ### 6. Setup Neo4j
 
 1. **Neo4j Desktop** → Start database
