@@ -59,18 +59,16 @@ Book ──PUBLISHED_BY──► Publisher
 
 ```
 Beyond-Search/
+├── .env.example                 # Template environment variables
 ├── .gitignore                   # File untuk mengabaikan file yang tidak diperlukan git
-├── NodesProject.py              # Hybrid QA: Text-to-Cypher + Vector RAG + LLM (Interactive)
+├── NodesProject.py              # Main App: Hybrid QA (Text-to-Cypher + Vector RAG + LLM)
 ├── README.md                    # Dokumentasi ini
+├── Requirements.txt             # Dependency Python berkas proyek
 ├── data_literatur_final (1).csv # Dataset mentah domain literatur dari Wikidata/DBpedia
-├── graph_analytics.py           # GDS Pipeline: PageRank, Louvain, dan FastRP Embedding
-├── setup_db.py                  # Setup awal: koneksi & verifikasi database Neo4j
-├── requirements.txt             # Dependency Python berkas proyek
-└── .env.example                 # Template environment variables
+├── graph_analytics.py           # GDS Pipeline: PageRank, Louvain, dan Jaccard Similarity
+└── setup_db.py                  # Skrip awal: koneksi & load database ke Neo4j
  
 ```
-
----
 ## 🚀 Instalasi & Konfigurasi
 
 ### 1. Prerequisites
