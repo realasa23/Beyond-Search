@@ -134,4 +134,10 @@ python graph_analytics.py
 # 3. Main app — Hybrid QA interaktif
 python NodesProject.py
 ```
+## 🤖 Dokumentasi Penggunaan AI
 
+| Aspek | Detail |
+|---|---|
+| **Model AI** | Claude Sonnet (claude.ai) & ChatGPT |
+| **Kegunaan** | Pembuatan struktur dasar kode pipeline, debugging error library LangChain, penjelasan teoretis arsitektur GDS dan RAG. |
+| **Modifikasi Manual** | Penyesuaian skema kredensial lokal ke database Neo4j, integrasi `load_dotenv()`, perubahan model ke `gpt-4o-mini`, dan penyusunan alur logika *interactive loop* untuk query pengguna. |
