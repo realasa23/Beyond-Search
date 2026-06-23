@@ -34,7 +34,6 @@ Book ──PUBLISHED_BY──► Publisher
 │       ├── PageRank Centrality
 │       |── Louvain Community Detection
 |       └── Jaccard Similarity
-│        
 │
 └── [NodesProject.py] Hybrid QA Pipeline
 ├── LLM: OpenRouter (gpt-4o-mini)
@@ -84,7 +83,7 @@ Beyond-Search/
 
 ```bash
 git clone https://github.com/realasa23/Beyond-Search
-cd graf-pengetahuan
+cd Beyond-Search 
 ```
 ### 3. Setup Virtual Environment
 
